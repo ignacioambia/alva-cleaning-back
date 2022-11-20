@@ -1,6 +1,5 @@
 const express = require("express");
 const axios = require("axios");
-const { rmSync } = require("fs");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -9,8 +8,7 @@ router.get("/", (req, res) => {
       `https://maps.googleapis.com${req.originalUrl}&key=${process.env.GOOGLE_KEY}`
     )
     .then(({ data }) => {
-      console.log("res is: ", data);
-      res.send(response);
+      res.send(data);
     })
     .catch((e) => {
       res.status(200).send(e.message);
