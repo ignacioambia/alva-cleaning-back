@@ -39,6 +39,12 @@ const services = require("./routes/services");
 app.use("/maps/*", maps);
 app.use("/services", services);
 
+
+//just used to wakeup server
+app.get("/", (req, res) => {
+  res.send("Server running");
+});
+
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log("alva cleaning running on port", port);
